@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Feliz Cumpleaños Katy</title>
+<style>
+  body {
+    margin: 0; 
+    background: #f0f8ff;
+    overflow-x: hidden;
+    font-family: 'Arial Black', Arial, sans-serif;
+    user-select: none;
+  }
+
+  /* Globos animados */
+  .balloon {
+    position: fixed;
+    bottom: -150px;
+    width: 60px;
+    height: 80px;
+    background: radial-gradient(circle at 20px 20px, #ff4b5c, #c3001f);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity: 0.8;
+    animation-name: floatUp;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  .balloon:nth-child(1) {
+    left: 10%;
+    background: radial-gradient(circle at 20px 20px, #ff4b5c, #c3001f);
+    animation-duration: 7s;
+    animation-delay: 0s;
+  }
+  .balloon:nth-child(2) {
+    left: 25%;
+    background: radial-gradient(circle at 20px 20px, #ff9f1c, #c67c00);
+    animation-duration: 6s;
+    animation-delay: 1s;
+  }
+  .balloon:nth-child(3) {
+    left: 40%;
+    background: radial-gradient(circle at 20px 20px, #3f72af, #0c2240);
+    animation-duration: 8s;
+    animation-delay: 0.5s;
+  }
+  .balloon:nth-child(4) {
+    left: 55%;
+    background: radial-gradient(circle at 20px 20px, #30e3ca, #117864);
+    animation-duration: 7.5s;
+    animation-delay: 1.5s;
+  }
+  .balloon:nth-child(5) {
+    left: 70%;
+    background: radial-gradient(circle at 20px 20px, #ff9a9e, #cc3e5a);
+    animation-duration: 6.5s;
+    animation-delay: 1.2s;
+  }
+  .balloon:nth-child(6) {
+    left: 85%;
+    background: radial-gradient(circle at 20px 20px, #f7b733, #fc4a1a);
+    animation-duration: 7.3s;
+    animation-delay: 0.7s;
+  }
+
+  @keyframes floatUp {
+    0% { bottom: -150px; transform: translateX(0) rotate(0deg); opacity: 0.8; }
+    50% { transform: translateX(15px) rotate(10deg); opacity: 1; }
+    100% { bottom: 110vh; transform: translateX(0) rotate(-10deg); opacity: 0; }
+  }
+
+  /* Contenedor para el pastel y textos */
+  #container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 50px;
+  }
+
+  /* Pastel */
+  #cake {
+    margin: 0 auto;
+    width: 200px;
+    height: 200px;
+    position: relative;
+  }
+
+  /* Base del pastel */
+  .layer {
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    background: #ff99cc;
+    border-radius: 50% / 50%;
+    left: 25px;
+    bottom: 0;
+    opacity: 0;
+  }
+  .layer:nth-child(1) { bottom: 0; background: #ff99cc; }
+  .layer:nth-child(2) { bottom: 40px; width: 120px; left: 40px; background: #ff66a3;}
+  .layer:nth-child(3) { bottom: 80px; width: 90px; left: 55px; background: #ff3385;}
+
+  /* Velas */
+  .candle {
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: #fff;
+    border-radius: 3px;
+    bottom: 130px;
+    opacity: 0;
+  }
+  .candle:nth-child(4) { left: 70px; background: #f9d71c;}
+  .candle:nth-child(5) { left: 90px; background: #f9d71c;}
+  .candle:nth-child(6) { left: 110px; background: #f9d71c;}
+
+  /* Llama */
+  .flame {
+    position: absolute;
+    width: 10px;
+    height: 14px;
+    background: radial-gradient(circle, #f9d71c 50%, transparent 70%);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    top: -14px;
+    left: -1px;
+    opacity: 0;
+    filter: drop-shadow(0 0 3px orange);
+    animation: flicker 1.5s infinite;
+  }
+  .candle .flame { pointer-events: none; }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 1; transform: scale(1) translateX(0); }
+    50% { opacity: 0.8; transform: scale(1.1) translateX(1px);}
+  }
+
+  /* Texto Feliz cumpleaños */
+  #message {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #d61a4a;
+    margin-top: 30px;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
+  /* Carta */
+  #card {
+    width: 300px;
+    height: 200px;
+    background: #fff7e6;
+    border: 3px solid #d69c34;
+    border-radius: 15px;
+    box-shadow: 3px 3px 10px rgba(214, 156, 52, 0.7);
+    margin: 40px auto 0;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #805700;
+    opacity: 0;
+    transition: opacity 1s ease;
+    line-height: 1.3;
+    user-select: text;
+  }
+
+  /* Mostrar elementos con clase .show */
+  .show {
+    opacity: 1 !important;
+  }
+</style>
+</head>
+<body>
+
+<!-- Globos -->
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+<div class="balloon"></div>
+
+<div id="container" tabindex="0">
+  <!-- Pastel -->
+  <div id="cake">
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+    <div class="candle"><div class="flame"></div></div>
+  </div>
+
+  <!-- Texto Feliz cumpleaños -->
+  <div id="message">Feliz cumpleaños Katy</div>
+
+  <!-- Carta -->
+  <div id="card">
+    Una persona tan especial como tú se merece toda la felicidad del mundo y un poco más.<br><br>
+    ¡Feliz cumpleaños!!
+  </div>
+</div>
+
+<script>
+  // Variables para manejar estados
+  const cakeLayers = document.querySelectorAll('#cake .layer');
+  const candles = document.querySelectorAll('#cake .candle');
+  const flames = document.querySelectorAll('.flame');
+  const message = document.getElementById('message');
+  const card = document.getElementById('card');
+
+  // Estado de clics
+  let clickCount = 0;
+
+  // Inicialmente esconder pastel, texto y carta
+  cakeLayers.forEach(l => l.style.opacity = '0');
+  candles.forEach(c => c.style.opacity = '0');
+  flames.forEach(f => f.style.opacity = '0');
+  message.style.opacity = '0';
+  card.style.opacity = '0';
+
+  // Función para mostrar pastel en animación escalonada
+  function showCakeStep(step) {
+    if (step < cakeLayers.length) {
+      cakeLayers[step].style.transition = 'opacity 0.8s ease';
+      cakeLayers[step].style.opacity = '1';
+      setTimeout(() => showCakeStep(step + 1), 800);
+    } else {
+      // Mostrar velas y llama después
+      candles.forEach((c, i) => {
+        setTimeout(() => {
+          c.style.transition = 'opacity 0.6s ease';
+          c.style.opacity = '1';
+          flames[i].style.opacity = '1';
+        }, i * 400);
+      });
+    }
+  }
+
+  // Controlar clics para mostrar cosas
+  document.getElementById('container').addEventListener('click', () => {
+    clickCount++;
+    if (clickCount === 1) {
+      showCakeStep(0);
+    } else if (clickCount === 2) {
+      message.classList.add('show');
+    } else if (clickCount === 3) {
+      card.classList.add('show');
+    }
+  });
+
+  // Para accesibilidad también permitir usar tecla Enter en el contenedor
+  document.getElementById('container').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      document.getElementById('container').click();
+    }
+  });
+</script>
+
+</body>
+</html>
